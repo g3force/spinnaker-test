@@ -32,6 +32,9 @@ int main(int argc, const char **argv) {
   pCam->TriggerMode.SetValue(Spinnaker::TriggerMode_Off);
   pCam->AcquisitionMode.SetValue(Spinnaker::AcquisitionMode_Continuous);
 
+  pCam->ExposureAuto.SetValue(Spinnaker::ExposureAuto_Off);
+  pCam->ExposureTime.SetValue(15000);
+
   // reference: https://www.ptgrey.com/tan/11174
   pCam->TLStream.StreamBufferHandlingMode.SetValue(streamBufferHandlingMode);
   pCam->TLStream.StreamBufferCountMode.SetValue(Spinnaker::StreamBufferCountMode_Manual);
