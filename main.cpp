@@ -49,9 +49,22 @@ int main(int argc, const char **argv) {
   }
 
   pCam->BeginAcquisition();
+  pCam->EndAcquisition();
+
+  try {
+    pCam->PixelFormat.SetValue(Spinnaker::PixelFormat_BayerRG8);
+  }
+  catch (Spinnaker::Exception &e) {
+    fprintf(stderr, "An error occurred while setting pixel format (error code: %d, '%s')\n", e.GetError(),
+            e.GetFullErrorMessage());
+  }
+
+  pCam->BeginAcquisition();
+
+  printf("fps: %.2f\n", pCam->AcquisitionResultingFrameRate.GetValue());
 
   int sleepMs = 30;
-  int durationMS = 200000;
+  int durationMS = 300000;
   int iterations = durationMS / sleepMs;
   for (int i = 0; i < iterations; i++) {
     printf("Get %d\n", i);
