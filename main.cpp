@@ -77,7 +77,7 @@ int main(int argc, const char **argv) {
 
   pCam->EndAcquisition();
   pCam->DeInit();
-  pCam = nullptr;
+  pCam = NULL;
   pSystem->ReleaseInstance();
 
   return 0;
